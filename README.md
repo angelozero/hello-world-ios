@@ -6,8 +6,6 @@ Variáveis e Constantes
 
 Uma variável é um espaço na memória do computador que pode armazenar um valor e ser alterada a qualquer momento, usando a palavra-chave **`var`**. Já uma constante armazena um valor que não pode ser alterado após ser criado, usando a palavra-chave **`let`**.
 
-### Código de Exemplo
-
 ```swift
 // Declaring a mutable variable -> 'var'
 var message = "This is a text"
@@ -36,8 +34,6 @@ Tipos de Dados
 
 Em Swift, cada variável ou constante tem um tipo de dado específico que define o tipo de valor que ela pode armazenar, como números inteiros (**`Int`**), números decimais (**`Double`**), texto (**`String`**) e valores lógicos (**`Bool`**).
 
-### Código de Exemplo
-
 ```swift
 // Integer
 let number: Int = 1
@@ -63,8 +59,6 @@ Conversão de Tipos de Dados
 ---------------------------
 
 A conversão de tipos de dados, ou "type casting," é o processo de mudar uma variável de um tipo para outro. Por exemplo, você pode converter um número inteiro para uma string ou vice-versa.
-
-### Código de Exemplo
 
 ```swift
 let number: Int = 10
@@ -97,8 +91,6 @@ Operadores Lógicos
 ------------------
 
 Operadores lógicos são usados para combinar ou manipular expressões booleanas (verdadeiro ou falso). Eles incluem **`==`** (igual a), **`!=`** (diferente de), **`>`** (maior que), **`&&`** (E) e **`||`** (OU).
-
-### Código de Exemplo
 
 ```swift
 let isLow = 2 > 3
@@ -136,8 +128,6 @@ Coleções de Dados
 -----------------
 
 As coleções de dados permitem agrupar múltiplos valores em uma única estrutura. As mais comuns são **Tuplas** e **Arrays**. As tuplas agrupam valores de tipos diferentes, enquanto os arrays armazenam uma lista ordenada de valores do mesmo tipo.
-
-### Código de Exemplo
 
 ```swift
 // Tuples
@@ -179,8 +169,6 @@ Estruturas de Repetição: `While` e `Repeat-While`
 
 Os loops `while` e `repeat-while` são usados para executar um bloco de código repetidamente enquanto uma condição for verdadeira. O `while` verifica a condição antes de executar o código, enquanto o `repeat-while` executa o código pelo menos uma vez antes de verificar a condição.
 
-### Código de Exemplo
-
 ```swift
 // while loop
 var number = 0
@@ -204,8 +192,6 @@ Loops `for`, `Range` e `where`
 ------------------------------
 
 O loop `for` é usado para iterar sobre uma sequência de valores, como um array ou um intervalo de números. Você pode usar a palavra-chave `where` para adicionar uma condição extra ao seu loop.
-
-### Código de Exemplo
 
 ```swift
 // Range
