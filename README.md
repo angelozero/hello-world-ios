@@ -8,8 +8,6 @@ Uma variável é um espaço na memória do computador que pode armazenar um valo
 
 ### Código de Exemplo
 
-Swift
-
 ```swift
 // Declaring a mutable variable -> 'var'
 var message = "This is a text"
@@ -40,8 +38,6 @@ Em Swift, cada variável ou constante tem um tipo de dado específico que define
 
 ### Código de Exemplo
 
-Swift
-
 ```swift
 // Integer
 let number: Int = 1
@@ -70,8 +66,6 @@ A conversão de tipos de dados, ou "type casting," é o processo de mudar uma va
 
 ### Código de Exemplo
 
-Swift
-
 ```swift
 let number: Int = 10
 let numberAsString: String = String(number)
@@ -84,8 +78,6 @@ print("The value is \(value)")
 ```
 
 -   **Exemplo de exercícios:**
-
-Swift
 
 ```swift
 // 1. Convert a String to a Boolean
@@ -107,8 +99,6 @@ Operadores Lógicos
 Operadores lógicos são usados para combinar ou manipular expressões booleanas (verdadeiro ou falso). Eles incluem **`==`** (igual a), **`!=`** (diferente de), **`>`** (maior que), **`&&`** (E) e **`||`** (OU).
 
 ### Código de Exemplo
-
-Swift
 
 ```swift
 let isLow = 2 > 3
@@ -148,8 +138,6 @@ Coleções de Dados
 As coleções de dados permitem agrupar múltiplos valores em uma única estrutura. As mais comuns são **Tuplas** e **Arrays**. As tuplas agrupam valores de tipos diferentes, enquanto os arrays armazenam uma lista ordenada de valores do mesmo tipo.
 
 ### Código de Exemplo
-
-Swift
 
 ```swift
 // Tuples
@@ -193,8 +181,6 @@ Os loops `while` e `repeat-while` são usados para executar um bloco de código 
 
 ### Código de Exemplo
 
-Swift
-
 ```swift
 // while loop
 var number = 0
@@ -220,8 +206,6 @@ Loops `for`, `Range` e `where`
 O loop `for` é usado para iterar sobre uma sequência de valores, como um array ou um intervalo de números. Você pode usar a palavra-chave `where` para adicionar uma condição extra ao seu loop.
 
 ### Código de Exemplo
-
-Swift
 
 ```swift
 // Range
