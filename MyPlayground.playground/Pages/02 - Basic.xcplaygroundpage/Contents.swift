@@ -31,3 +31,18 @@ nameList += otherNameList
 
 print(nameList)
 
+// recuperando o primeiro nome
+let firstName = nameList[0]
+print("the first name is \(firstName)")
+
+// recuperando um range de nomes 'slice an array'
+// firstThreeNames é uma referencia para os 3 primeiros nomes e nao um novo array!!
+let firstThreeNames = nameList[0...2];
+print("the first three names are \(firstThreeNames)")
+
+// para criar um novo array
+let newListName = Array(nameList[2...4])
+print("this is the new list \(newListName)")
+print("is the new list is empty ? \(newListName.isEmpty)")
+print("wich size the list has ? \(newListName.count)")
+print("is the list has Angelo name ? \(newListName.contains("Angelo"))")
