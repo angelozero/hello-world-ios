@@ -48,9 +48,9 @@ for i in 0...namesList.count where i < namesList.count {
 for numero in 1...10 where numero % 3 == 0{
     if numero % 3 == 0 {
         print("O número \(numero) é divisível por 3.")
-//    } else {
-//        print("O número é \(numero).")
-//    }
+        //    } else {
+        //        print("O número é \(numero).")
+        //    }
+    }
 }
-
 
