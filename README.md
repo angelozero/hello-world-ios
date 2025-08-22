@@ -217,7 +217,7 @@ for number in 1...10 where number % 3 == 0 {
     print("The number \(number) is divisible by 3.")
 }
 ```
------
+
 * * * * *
 
 Iteração em Coleções
@@ -266,7 +266,6 @@ for day in days {
 }
 ```
 
------
 * * * * *
 
 Coleções de Dados: Dicionários
@@ -316,7 +315,6 @@ for (key, value) in products {
 }
 ```
 
------
 * * * * *
 
 Coleções de Dados: Sets
