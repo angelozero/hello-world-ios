@@ -217,3 +217,135 @@ for number in 1...10 where number % 3 == 0 {
     print("The number \(number) is divisible by 3.")
 }
 ```
+-----
+* * * * *
+
+Iteração em Coleções
+--------------------
+
+O `for-in` loop no Swift é uma maneira poderosa e flexível de iterar sobre sequências, como arrays. Você pode usar um range (ex: `0..<dollars.count`) para percorrer os índices de um array ou simplesmente iterar sobre os elementos diretamente.
+
+O loop `for-in` também pode ser usado com a cláusula `where` para filtrar elementos com base em uma condição. Além disso, as palavras-chave `break` e `continue` dão mais controle ao fluxo do loop: `break` encerra o loop completamente, enquanto `continue` pula para a próxima iteração.
+
+```swift
+import UIKit
+
+let dollars = [5.1, 5.2, 4.9, 4.32, 5.43, 5.11]
+let days = ["01/02", "02/02", "03/02", "04/02", "05/02", "06/02"]
+
+// Iterando sobre os índices
+for i in 0..<dollars.count {
+    print("position \(i + 1) --- dollar \(dollars[i]) --- day \(days[i])")
+}
+
+print()
+
+// Iterando e filtrando com a cláusula 'where'
+for i in 0..<dollars.count where dollars[i] < 5 {
+    print("position \(i + 1) --- dollar \(dollars[i]) --- day \(days[i])")
+}
+
+print()
+
+// Usando 'break' para parar o loop
+for day in days {
+    if day == "04/02" {
+        break
+    }
+    print(day)
+}
+
+print()
+
+// Usando 'continue' para pular uma iteração
+for day in days {
+    if day == "04/02" {
+        continue
+    }
+    print(day)
+}
+```
+
+-----
+* * * * *
+
+Coleções de Dados: Dicionários
+------------------------------
+
+Os **dicionários** são coleções desordenadas que armazenam associações entre uma **chave** (`key`) e um **valor** (`value`). Eles são ideais para acessar dados rapidamente usando uma chave, em vez de um índice numérico.
+
+Você pode criar um dicionário, acessar valores usando a chave, alterar valores, e até mesmo remover uma associação, definindo o valor para `nil`.
+
+```swift
+import UIKit
+
+// Comparando Dicionário e Array
+// Array -> índice, sequência
+// Dicionário -> Chave, valor, estrutura desordenada
+
+var products: [Int : String] = [
+    1 : "Banana",
+    2 : "Apple",
+    3 : "Watermelon"
+]
+
+print(products)
+
+// Acessando um valor. O '?? "NOT_FOUND"' fornece um valor padrão caso a chave não seja encontrada.
+print("The fruit is \(products[1] ?? "NOT_FOUND")")
+print("The fruit is \(products[11] ?? "NOT_FOUND")")
+
+print()
+
+// Alterando um valor
+products[3] = "Orange"
+print("Watermelon now is \(products[3] ?? "NOT_FOUND")")
+
+print()
+
+// Excluindo um valor
+products[3] = nil
+print(products)
+
+print()
+
+// Buscando todas as chaves e valores
+products[3] = "Watermelon"
+for (key, value) in products {
+    print("Key \(key) --- Value \(value)")
+}
+```
+
+-----
+* * * * *
+
+Coleções de Dados: Sets
+-----------------------
+
+Os **Sets** são coleções que armazenam valores únicos do mesmo tipo. Eles são eficientes para verificar a existência de um item e garantem que não haja duplicatas.
+
+Você pode inserir elementos em um `Set` e usar o método `.contains()` para verificar se um valor já existe. Se você tentar inserir um valor que já está no `Set`, a operação simplesmente não terá efeito.
+
+```swift
+import UIKit
+
+// Trabalhando com dados únicos
+var newSet: Set<Int> = []
+
+newSet.insert(10)
+newSet.insert(3)
+newSet.insert(10) // Este valor não será inserido, pois já existe
+
+print(newSet)
+
+print()
+
+// Verificando se a inserção foi bem-sucedida
+let response = newSet.insert(4)
+print("The value was inserted ? \(response.inserted ? "Yes" : "No")")
+
+print()
+
+// Verificando se um valor está contido no Set
+print("The number 3 contains in newSet ? \(newSet.contains(3) ? "Yes": "No" )")
+```
