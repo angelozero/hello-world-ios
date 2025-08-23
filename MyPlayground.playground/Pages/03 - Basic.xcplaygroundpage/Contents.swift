@@ -1,4 +1,4 @@
-import UIKit
+import Foundation
 
 /**
  Repetição de Código com Repeat e While

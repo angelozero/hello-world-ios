@@ -1,4 +1,4 @@
-import UIKit
+import Foundation
 
 /**
  For. Range. Where e Mod

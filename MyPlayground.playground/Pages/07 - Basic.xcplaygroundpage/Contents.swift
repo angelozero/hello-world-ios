@@ -1,4 +1,4 @@
-import UIKit
+import Foundation
 
 /**
  Coleção de Dados com Sets

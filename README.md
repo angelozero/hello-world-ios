@@ -347,3 +347,71 @@ print()
 // Verificando se um valor está contido no Set
 print("The number 3 contains in newSet ? \(newSet.contains(3) ? "Yes": "No" )")
 ```
+
+Aqui está o documento **`README.md`** com base no trecho de código que você forneceu. O documento segue o mesmo formato de título, explicação em português e código em inglês com as devidas correções.
+
+* * * * *
+
+Funções
+-------
+
+Funções são blocos de código reutilizáveis que podem ser chamados em seu projeto para realizar uma tarefa específica. Elas podem receber valores de entrada (parâmetros) e retornar um valor de saída.
+
+
+```swift
+// Functions are blocks of code that can be reused in your project.
+func generateRandomTicketNumbers(count: Int) -> Set<Int> {
+    var numbersToGenerate = count
+    var generatedNumbers: Set<Int> = []
+    
+    while(numbersToGenerate > 0){
+        let randomNumber = Int.random(in: 1...60)
+        let insertionResult = generatedNumbers.insert(randomNumber)
+        
+        if(insertionResult.inserted){
+            numbersToGenerate -= 1
+        }
+    }
+    
+    return generatedNumbers
+}
+
+let lotteryNumbers = generateRandomTicketNumbers(count: 15)
+print("The random numbers are: \(lotteryNumbers)")
+```
+
+* * * * *
+
+A função `Switch` / `Case`
+-------------------------
+
+A instrução **`switch`** compara um valor com vários possíveis padrões. Ela é uma alternativa mais limpa e eficiente para múltiplas instruções **`if-else if-else`** quando você precisa verificar um único valor contra vários casos.
+
+```swift
+func dayOfWeek(dayNumber: Int) -> String {
+    var dayName: String = ""
+    switch dayNumber {
+    case 1:
+        dayName = "Sunday"
+    case 2:
+        dayName = "Monday"
+    case 3:
+        dayName = "Tuesday"
+    case 4:
+        dayName = "Wednesday"
+    case 5:
+        dayName = "Thursday"
+    case 6:
+        dayName = "Friday"
+    case 7, 8, 9, 10:
+        dayName = "Saturday"
+    default:
+        dayName = "Invalid day"
+    }
+    
+    return dayName
+}
+
+let day = dayOfWeek(dayNumber: 10)
+print("Today is \(day)")
+```

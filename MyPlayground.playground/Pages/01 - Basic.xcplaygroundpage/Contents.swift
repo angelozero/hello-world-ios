@@ -1,4 +1,4 @@
-import UIKit
+import Foundation
 
 /**
  Criação de variáveis
