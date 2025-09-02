@@ -66,3 +66,42 @@ func dayOfWeek(numberDay: Int) -> String {
 
 let day = dayOfWeek(numberDay: 10)
 print("Today is \(day)")
+
+// Metodo tradicional
+print()
+func getFullName1(firstName: String, lastName: String) -> String {
+    return firstName + " " + lastName
+}
+
+let fullName1 = getFullName1(firstName: "Angelo", lastName: "Zero")
+print(fullName1)
+
+
+// Metodo com valores default no parametro
+print()
+func getFullName2(firstName: String, lastName: String = "Default") -> String {
+    return firstName + " " + lastName
+}
+
+let fullName2 = getFullName2(firstName: "Angelo")
+print(fullName2)
+
+
+// Metodo sem passar o nome dos parametros/argumentos
+print()
+func getFullName3(_ firstName: String, _ lastName: String) -> String {
+    return firstName + " " + lastName
+}
+
+let fullName3 = getFullName3("Angelo", "Zero")
+print(fullName3)
+
+
+// Metodo dadndo nome para o argumento/parametro
+print()
+func getFullName4(name firstName: String, _ lastName: String) -> String {
+    return firstName + " " + lastName
+}
+
+let fullName4 = getFullName4(name: "Angelo", "Final Zero")
+print(fullName4)
