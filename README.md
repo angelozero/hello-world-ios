@@ -1,8 +1,7 @@
 # 🚀 Olá mundo iOs
 Estudo sobre swift básico
 
-Variáveis e Constantes
-----------------------
+### Variáveis e Constantes
 
 Uma variável é um espaço na memória do computador que pode armazenar um valor e ser alterada a qualquer momento, usando a palavra-chave **`var`**. Já uma constante armazena um valor que não pode ser alterado após ser criado, usando a palavra-chave **`let`**.
 
@@ -27,10 +26,7 @@ print(pi)
 
 ```
 
-* * * * *
-
-Tipos de Dados
---------------
+### Tipos de Dados
 
 Em Swift, cada variável ou constante tem um tipo de dado específico que define o tipo de valor que ela pode armazenar, como números inteiros (**`Int`**), números decimais (**`Double`**), texto (**`String`**) e valores lógicos (**`Bool`**).
 
@@ -53,10 +49,7 @@ print(isHuman)
 
 ```
 
-* * * * *
-
-Conversão de Tipos de Dados
----------------------------
+### Conversão de Tipos de Dados
 
 A conversão de tipos de dados, ou "type casting," é o processo de mudar uma variável de um tipo para outro. Por exemplo, você pode converter um número inteiro para uma string ou vice-versa.
 
@@ -85,10 +78,7 @@ print("Exercise 2 answer: \(intValue)")
 
 ```
 
-* * * * *
-
-Operadores Lógicos
-------------------
+### Operadores Lógicos
 
 Operadores lógicos são usados para combinar ou manipular expressões booleanas (verdadeiro ou falso). Eles incluem **`==`** (igual a), **`!=`** (diferente de), **`>`** (maior que), **`&&`** (E) e **`||`** (OU).
 
@@ -122,10 +112,7 @@ print("Is a driver and is 30 or older? \(isDriverAndIsThirtyPlus)")
 
 ```
 
-* * * * *
-
-Coleções de Dados
------------------
+### Coleções de Dados
 
 As coleções de dados permitem agrupar múltiplos valores em uma única estrutura. As mais comuns são **Tuplas** e **Arrays**. As tuplas agrupam valores de tipos diferentes, enquanto os arrays armazenam uma lista ordenada de valores do mesmo tipo.
 
@@ -162,10 +149,7 @@ print("Does the list contain the name Angelo? \(newListName.contains("Angelo"))"
 
 ```
 
-* * * * *
-
-Estruturas de Repetição: `While` e `Repeat-While`
--------------------------------------------------
+### Estruturas de Repetição: `While` e `Repeat-While`
 
 Os loops `while` e `repeat-while` são usados para executar um bloco de código repetidamente enquanto uma condição for verdadeira. O `while` verifica a condição antes de executar o código, enquanto o `repeat-while` executa o código pelo menos uma vez antes de verificar a condição.
 
@@ -186,10 +170,7 @@ repeat {
 
 ```
 
-* * * * *
-
-Loops `for`, `Range` e `where`
-------------------------------
+### Loops `for`, `Range` e `where`
 
 O loop `for` é usado para iterar sobre uma sequência de valores, como um array ou um intervalo de números. Você pode usar a palavra-chave `where` para adicionar uma condição extra ao seu loop.
 
@@ -218,10 +199,7 @@ for number in 1...10 where number % 3 == 0 {
 }
 ```
 
-* * * * *
-
-Iteração em Coleções
---------------------
+### Iteração em Coleções
 
 O `for-in` loop no Swift é uma maneira poderosa e flexível de iterar sobre sequências, como arrays. Você pode usar um range (ex: `0..<dollars.count`) para percorrer os índices de um array ou simplesmente iterar sobre os elementos diretamente.
 
@@ -266,10 +244,7 @@ for day in days {
 }
 ```
 
-* * * * *
-
-Coleções de Dados: Dicionários
-------------------------------
+### Coleções de Dados: Dicionários
 
 Os **dicionários** são coleções desordenadas que armazenam associações entre uma **chave** (`key`) e um **valor** (`value`). Eles são ideais para acessar dados rapidamente usando uma chave, em vez de um índice numérico.
 
@@ -315,10 +290,7 @@ for (key, value) in products {
 }
 ```
 
-* * * * *
-
-Coleções de Dados: Sets
------------------------
+### Coleções de Dados: Sets
 
 Os **Sets** são coleções que armazenam valores únicos do mesmo tipo. Eles são eficientes para verificar a existência de um item e garantem que não haja duplicatas.
 
@@ -350,10 +322,7 @@ print("The number 3 contains in newSet ? \(newSet.contains(3) ? "Yes": "No" )")
 
 Aqui está o documento **`README.md`** com base no trecho de código que você forneceu. O documento segue o mesmo formato de título, explicação em português e código em inglês com as devidas correções.
 
-* * * * *
-
-Funções
--------
+### Funções
 
 Funções são blocos de código reutilizáveis que podem ser chamados em seu projeto para realizar uma tarefa específica. Elas podem receber valores de entrada (parâmetros) e retornar um valor de saída.
 
@@ -380,10 +349,7 @@ let lotteryNumbers = generateRandomTicketNumbers(count: 15)
 print("The random numbers are: \(lotteryNumbers)")
 ```
 
-* * * * *
-
-A função `Switch` / `Case`
--------------------------
+### A função `Switch` / `Case`
 
 A instrução **`switch`** compara um valor com vários possíveis padrões. Ela é uma alternativa mais limpa e eficiente para múltiplas instruções **`if-else if-else`** quando você precisa verificar um único valor contra vários casos.
 
@@ -414,6 +380,142 @@ func dayOfWeek(dayNumber: Int) -> String {
 
 let day = dayOfWeek(dayNumber: 10)
 print("Today is \(day)")
+```
 
+-----
 
+### Variáveis Opcionais
+
+Variáveis **opcionais** são usadas para lidar com valores que podem estar ausentes. Elas são declaradas com um ponto de interrogação `?` após o tipo, indicando que a variável pode conter um valor ou ser `nil`. Para acessar o valor, você deve "desembrulhar" (unwrap) a variável opcional de forma segura, como com a instrução `if let`.
+
+```swift
+import Foundation
+
+// Optional Variables
+
+// We declare values that may or may not contain data with a '?' in front of the type.
+var myName: String? = "Angelo"
+
+func sayHello(name: String?){
+    // To ensure we retrieve the value correctly, we safely unwrap the optional value.
+    if let nameValue = name {
+        print("Hello \(nameValue)")
+    } else {
+        print("Hello user")
+    }
+}
+
+sayHello(name: myName)
+print()
+
+// Example with a tuple
+var user: (name: String, cpf: String, age: Int?)
+user.name = "Angelo"
+user.cpf = "123.123.123-12"
+user.age = nil
+
+print(user)
+```
+
+-----
+
+### Valores Padrões
+
+Em Swift, você pode definir um valor padrão para uma variável opcional usando o operador de coalescência nula `??`. Se a variável opcional contiver um valor, ele será usado. Caso contrário, o valor padrão que você forneceu será atribuído.
+
+```swift
+import Foundation
+
+// Optional
+// Default Values
+func generateRandomNumber(numA: Int?, numB: Int?, numC: Int?, numD: Int?) -> Int {
+    
+    // If numA is nil, valueA receives 10 by default.
+    let valueA = numA ?? 10
+    
+    // If numB is nil, valueB receives 20 by default.
+    let valueB = numB ?? 20
+    
+    // Forced unwraping
+    let valueC = numC!
+    
+    // Checking an optional variable
+    let auxValueD: Int
+    // If numD is nil
+    if let valueD = numD {
+        auxValueD = valueD
+    } else {
+        // By default, auxValueD receives 999.
+        auxValueD = 999
+    }
+    
+    print(auxValueD)
+    
+    return Int.random(in: valueA...valueB)
+}
+
+// will generate 'Fatal error: Unexpectedly found nil while unwrapping an Optional value'
+//let randomNumber = generateRandomNumber(numA: 10, numB: 20, numC: nil, numD: nil)
+
+let randomNumber = generateRandomNumber(numA: 10, numB: 20, numC: 10, numD: nil)
+
+print(randomNumber)
+```
+
+-----
+
+### Desembrulhando Opcionais de Forma Segura
+
+Ao trabalhar com opcionais, é crucial garantir que você acesse seus valores de forma segura para evitar erros. O `guard let` é uma forma poderosa de fazer isso. Ele verifica se um opcional tem um valor e, se tiver, o atribui a uma constante, permitindo que o código continue a ser executado. Se o opcional for `nil`, o bloco `else` é executado, geralmente com um `return` para sair da função, garantindo que o resto do código só seja executado se o valor estiver presente.
+
+```swift
+import Foundation
+
+// Optional
+// Simulating a database call
+func findProductById(id: Int) -> String {
+    
+    // The database return will be a dictionary
+    let resultFromDataBase = [
+        1: "Banana",
+        2: "Watermelon",
+        3: "Limon"
+    ]
+    
+    // First, validate the success case
+    return resultFromDataBase[id] ?? "Fruit not found"
+}
+
+// Using Guard Let
+func findProductByName(name: String) -> Int {
+    
+    // The database return will be a dictionary
+    let resultFromDataBase = [
+        "Banana": 10,
+        "Watermelon": 20,
+        "Limon": 30
+    ]
+    
+    // First, validate the error case
+    guard let fruit = resultFromDataBase[name] else {
+        return 0;
+    }
+    
+    return fruit;
+}
+
+let fruitNameNotFound = findProductById(id: 4)
+print("Ops! \(fruitNameNotFound)")
+
+print()
+let fruitName = findProductById(id: 1)
+print("The fruit is \(fruitName)")
+
+print()
+let fruitValueNotFound = findProductByName(name: "Pinaple")
+print("Ops! Fruit value not found - \(fruitValueNotFound)")
+
+print()
+let fruitValue = findProductByName(name: "Banana")
+print("The value is - \(fruitValue)")
 ```
