@@ -519,3 +519,67 @@ print()
 let fruitValue = findProductByName(name: "Banana")
 print("The value is - \(fruitValue)")
 ```
+
+### Propriedades e Comportamentos com Structs
+
+Uma **`struct`** (abreviação de *structure*) é um tipo de valor em Swift que agrupa propriedades (variáveis e constantes) e comportamentos (funções) em uma única estrutura. Elas são ideais para criar modelos de dados simples e leves.
+
+Neste exemplo, a `struct User` define um modelo para um usuário com as propriedades `name`, `lastName` e `isAdmin`. A função `getFullName()` é um comportamento que retorna o nome completo do usuário, lidando com o fato de que o `lastName` é opcional.
+
+-----
+
+### Exemplo de Uso com `Dictionary` e `Array`
+
+O código demonstra como criar instâncias da `struct User` e armazená-las em diferentes tipos de coleções, como um dicionário e um array.
+
+1.  **`userList` (Dicionário)**: Mapeia um ID (`Int`) para um objeto `User`. O loop `for` itera sobre os **valores** do dicionário, imprimindo cada usuário e seu nome completo.
+2.  **`users` (Array)**: Uma lista simples de objetos `User`. O segundo loop `for` itera diretamente sobre os elementos do array, exibindo as mesmas informações.
+
+Ambos os exemplos mostram a versatilidade de usar `structs` para modelar dados e as propriedades de coleções para acessar e manipular essas informações.
+
+```swift
+import Foundation
+
+// Properties and Behaviors with Struct
+struct User {
+    let name: String
+    let lastName: String?
+    let isAdmin: Bool
+    
+    func getFullName() -> String {
+        let validLastName = lastName ?? ""
+        return name + " " + validLastName
+    }
+}
+
+let userA = User(name: "Angelo", lastName: "Zero", isAdmin: false)
+let userB = User(name: "Jake", lastName: nil, isAdmin: true)
+let userC = User(name: "Xerocks", lastName: "", isAdmin: false)
+
+let userList = [
+    1: userA,
+    2: userB,
+    3: userC
+]
+
+let users = [
+    userA,
+    userB,
+    userC
+]
+
+for finalUser in userList.values {
+    print(finalUser)
+    print("The user is \(finalUser.getFullName())")
+    print()
+}
+
+print("/********/")
+print()
+
+for finalUser in users {
+    print(finalUser)
+    print("The user is \(finalUser.getFullName())")
+    print()
+}
+```
