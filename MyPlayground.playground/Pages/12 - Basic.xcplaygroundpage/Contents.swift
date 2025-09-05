@@ -1,36 +1,46 @@
 import Foundation
 
 // Propriedades e Comportamentos com Struct
+
+// Structs sao imutaveis
 struct User {
     let name: String
     let lastName: String?
     let isAdmin: Bool
+    var ranking: Int?
     
     func getFullName() -> String {
         var validLastName = lastName ?? ""
         return name + " " + validLastName
     }
+    
+    mutating func setRanking(newRanking: Int){
+        ranking = newRanking
+    }
 }
 
-let userA = User(name: "Angelo", lastName: "Zero", isAdmin: false)
-let userB = User(name: "Jake", lastName: nil, isAdmin: true)
-let userC = User(name: "Xerocks", lastName: "", isAdmin: false)
+var userA = User(name: "Angelo", lastName: "Zero", isAdmin: false, ranking: 10)
+var userB = User(name: "Jake", lastName: nil, isAdmin: true, ranking: 20)
+var userC = User(name: "Xerocks", lastName: "", isAdmin: false, ranking: 30)
 
-let userList = [
+
+var userList = [
     1: userA,
     2: userB,
     3: userC
 ]
 
-let users = [
+var users = [
     userA,
     userB,
     userC
 ]
 
 for finalUser in userList.values {
-    print(finalUser)
-    print("The user is \(finalUser.getFullName())")
+    var finalUserData = finalUser
+    finalUserData.setRanking(newRanking: 100)
+    print(finalUserData)
+    print("The user is \(finalUserData.getFullName())")
     print()
 }
 
@@ -42,3 +52,4 @@ for finalUser in users {
     print("The user is \(finalUser.getFullName())")
     print()
 }
+

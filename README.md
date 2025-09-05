@@ -583,3 +583,59 @@ for finalUser in users {
     print()
 }
 ```
+
+Ótima ideia\! Criar um `README` detalhado é uma excelente forma de consolidar o conhecimento e ter uma referência rápida no futuro.
+
+Com base na sua explicação sobre **tipos por valor e por referência**, aqui está uma seção que segue o mesmo padrão do seu `README`, pronta para ser adicionada:
+
+-----
+
+### Structs vs. Classes: Tipos por Valor vs. Referência
+
+Em Swift, **`structs`** e **`classes`** são duas formas de criar tipos de dados complexos, mas se comportam de maneira fundamentalmente diferente:
+
+  * **`Structs` (Tipo por Valor)**: Quando você atribui uma `struct` a uma nova variável, o Swift cria uma **cópia completa e independente** do objeto. As duas variáveis são separadas na memória. Mudar uma não afeta a outra. Isso é ideal para modelos de dados simples e imutáveis.
+  * **`Classes` (Tipo por Referência)**: Quando você atribui uma `class` a uma nova variável, você está copiando apenas a **referência** (o endereço de memória) do objeto. Ambas as variáveis apontam para o mesmo objeto na memória. Mudar o objeto através de uma variável afetará a outra, pois elas compartilham a mesma instância. Isso é ideal para objetos que precisam ser compartilhados ou modificados.
+
+A escolha entre `struct` e `class` é uma das decisões de design mais importantes em Swift. Use `structs` para a maioria dos seus dados, especialmente quando a identidade do objeto não for importante. Use `classes` quando precisar de herança ou quando a identidade da instância for crucial.
+
+```swift
+import Foundation
+
+// Exemplo com Class (Tipo por Referência)
+class Person {
+    var name: String
+    
+    init(nameValue: String){
+        self.name = nameValue
+    }
+}
+
+// Quando p2 recebe p1, ele copia a referência.
+// Ambas as variáveis apontam para o mesmo objeto.
+var p1 = Person(nameValue: "Angelo")
+var p2 = p1
+p2.name = "Zero"
+
+print("--- Classes ---")
+print("p1.name: \(p1.name)") // p1.name é "Zero"
+print("p2.name: \(p2.name)") // p2.name é "Zero"
+print("Ambas as variáveis compartilham o mesmo objeto.")
+print()
+
+// Exemplo com Struct (Tipo por Valor)
+struct User {
+    var name: String
+}
+
+// Quando u2 recebe u1, ele cria uma CÓPIA do objeto.
+// As variáveis são completamente independentes.
+var u1 = User(name: "Angelo")
+var u2 = u1
+u2.name = "Zero"
+
+print("--- Structs ---")
+print("u1.name: \(u1.name)") // u1.name é "Angelo"
+print("u2.name: \(u2.name)") // u2.name é "Zero"
+print("u1 e u2 possuem cópias separadas do objeto.")
+```
