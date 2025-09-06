@@ -638,4 +638,5 @@ print("--- Structs ---")
 print("u1.name: \(u1.name)") // u1.name é "Angelo"
 print("u2.name: \(u2.name)") // u2.name é "Zero"
 print("u1 e u2 possuem cópias separadas do objeto.")
+
 ```
