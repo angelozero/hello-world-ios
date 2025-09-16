@@ -640,3 +640,64 @@ print("u2.name: \(u2.name)") // u2.name é "Zero"
 print("u1 e u2 possuem cópias separadas do objeto.")
 
 ```
+
+### Function Types: Resolvendo Problemas com Programação Funcional
+
+Em Swift, as **funções são cidadãs de primeira classe**, o que significa que elas podem ser tratadas como qualquer outro tipo de dado, como `Int` ou `String`. Isso permite que você as armazene em variáveis, passe-as como parâmetros para outras funções e as retorne de outras funções.
+
+  * **Tipos de Função (Function Types)**: Uma função tem um tipo específico que é definido pelos seus parâmetros e pelo seu tipo de retorno. Por exemplo, uma função que aceita dois inteiros e retorna um inteiro tem o tipo `(Int, Int) -> Int`.
+  * **Funções como Parâmetros**: A capacidade de passar funções como parâmetros é um dos pilares da **Programação Funcional**. Isso permite criar funções mais genéricas e flexíveis, onde o comportamento pode ser "injetado" no momento da chamada. O código se torna mais reutilizável e modular.
+  * **Closures (Blocos de Código)**: Uma `closure` é um bloco de código autônomo que pode ser passado e usado no seu código. Em Swift, as `closures` são a forma mais comum de se usar funções anônimas, permitindo uma sintaxe mais concisa para passar o comportamento de uma função diretamente no local da chamada.
+
+A utilização de `Function Types` e `closures` é ideal para cenários onde você precisa de flexibilidade, como em `callbacks` (retornos de chamada) para operações assíncronas (como chamadas de rede), ou para criar funções utilitárias que podem operar em diferentes tipos de dados ou com diferentes lógicas.
+
+```swift
+import Foundation
+
+// Tipos de Função: Definindo as operações
+// func sum(x: Int, y: Int) -> Int
+// Essa função tem o tipo '(Int, Int) -> Int'
+func sum(x: Int, y: Int) -> Int {
+    return x + y
+}
+
+// func sub(x: Int, y: Int) -> Int
+// Essa função também tem o tipo '(Int, Int) -> Int'
+func sub(x: Int, y: Int) -> Int {
+    return x - y
+}
+
+// Funções como Parâmetros: Criando uma função genérica
+// O parâmetro 'operation' aceita qualquer função do tipo '(Int, Int) -> Int'
+func calc(x: Int, y: Int, operation: (Int, Int) -> Int ) -> Int {
+    return operation(x, y)
+}
+
+// Chamando a função 'calc' passando a função 'sum' como parâmetro
+var result1 = calc(x: 10, y: 2, operation: sum)
+print("--- Funções como Parâmetros ---")
+print("Resultado da soma: \(result1)") // 12
+
+// Usando uma Closure: Sinta-se livre para usar closures
+// Passando um bloco de código anônimo diretamente para 'operation'
+var result2 = calc(x: 10, y: 2, operation: { x, y in x * y })
+print("Resultado da multiplicação com Closure: \(result2)") // 20
+print()
+
+// Callbacks: Um uso prático de Closures
+// O parâmetro 'callback' é uma closure do tipo '(Int) -> ()'
+func callServer(url: String, callback: (Int) -> ()) {
+    // Simulando uma chamada que retornou status 200
+    let code = 200
+    callback(code) // Executa a closure passada pelo usuário
+}
+
+print("--- Callbacks ---")
+callServer(url: "http://meu-site.com", callback: { code in
+    if code == 200 {
+        print("Chamada realizada com sucesso. Código: \(code)")
+    } else {
+        print("Falha na chamada. Código: \(code)")
+    }
+})
+```
