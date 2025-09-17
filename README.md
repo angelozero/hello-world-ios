@@ -701,3 +701,101 @@ callServer(url: "http://meu-site.com", callback: { code in
     }
 })
 ```
+---
+
+### Protocols: A Chave para a Modularidade e o Acoplamento Fraco
+
+Em Swift, os **`protocols`** são a espinha dorsal de um design de software flexível e manutenível. Um `protocol` define um conjunto de propriedades, métodos e outros requisitos que uma **`class`**, **`struct`** ou **`enum`** pode adotar. Eles não contêm a implementação desses requisitos, apenas a "blueprint" (planta) do que deve ser implementado.
+
+A principal vantagem de usar `protocols` é a capacidade de criar um **acoplamento fraco** entre diferentes partes do seu código. Em vez de depender de uma implementação concreta (uma classe específica), suas classes podem depender de um `protocol`. Isso significa que você pode trocar a implementação sem ter que modificar as classes que a utilizam. O seu código se torna mais **modular**, **reutilizável** e **fácil de testar**.
+
+#### Como Não Fazer (Alto Acoplamento)
+
+O primeiro exemplo mostra um design com **alto acoplamento**. As classes `Login`, `Home` e `Profile` dependem diretamente da classe `GoogleAnalytics`. Se por algum motivo você decidir trocar o sistema de analytics para o Firebase ou qualquer outro, você precisaria modificar cada uma das classes para usar a nova implementação.
+
+  * **Problema**: As classes de tela (Login, Home, Profile) estão **fortemente acopladas** à classe `GoogleAnalytics`.
+  * **Consequência**: Qualquer mudança na forma como o `GoogleAnalytics` é instanciado ou chamado afetaria diretamente todas as classes que o utilizam, tornando o código inflexível e difícil de manter.
+
+<!-- end list -->
+
+```swift
+import Foundation
+
+// Como não fazer: Acoplamento forte
+
+class GoogleAnalytics {
+    func eventRegister(eventName: String){
+        let dateNow = Date()
+        print("Event Sent: \(dateNow) : \(eventName)")
+    }
+}
+
+// Todas as classes dependem diretamente da implementação concreta 'GoogleAnalytics'
+class Login {
+    private let analytics = GoogleAnalytics()
+    
+    func initLogin(){
+        analytics.eventRegister(eventName: "Login - initLogin")
+        print("Fazendo login...")
+        print()
+        sleep(2)
+    }
+}
+
+// ... e assim por diante para Home e Profile.
+```
+
+-----
+
+#### Como Fazer (Baixo Acoplamento com Protocols)
+
+O segundo exemplo demonstra a utilização de um `protocol` para resolver o problema de acoplamento.
+
+1.  **Definindo o Protocolo**: Um `protocol` chamado **`Tracker`** é criado, que define um único método, `eventRegister(eventName: String)`.
+2.  **Adotando o Protocolo**: A classe `GoogleAnalytics` **adota** o `Tracker` e fornece a sua própria implementação do método.
+3.  **Dependência de Protocolo**: As classes `Login`, `Home` e `Profile` agora não dependem mais da classe `GoogleAnalytics`. Elas dependem do `protocol` **`Tracker`**. A instância de `Tracker` é injetada (passada como parâmetro) no `init` da classe, um padrão conhecido como **Injeção de Dependência**.
+
+<!-- end list -->
+
+  * **Vantagem**: Se você quiser usar um novo sistema de analytics (por exemplo, `FirebaseAnalytics`), basta criar uma nova classe que adote o `protocol` `Tracker`. Você não precisará mudar **nenhuma** das classes de tela. Elas continuam a funcionar, pois esperam apenas um objeto que seja do tipo `Tracker`, independentemente de sua implementação subjacente.
+  * **Consequência**: O código se torna mais **modular, flexível e fácil de testar**, pois você pode "mockar" (simular) o `Tracker` em testes unitários.
+
+<!-- end list -->
+
+```swift
+import Foundation
+
+// Como fazer: Baixo acoplamento com Protocols
+
+// 1. Defina um Protocolo (a "blueprint")
+protocol Tracker {
+    func eventRegister(eventName: String)
+}
+
+// 2. Classes que implementam o protocolo
+class GoogleAnalytics: Tracker{
+    func eventRegister(eventName: String){
+        let dateNow = Date()
+        print("Event Sent: \(dateNow) : \(eventName)")
+    }
+}
+
+// 3. Injeção de Dependência via Protocol
+// As classes agora dependem do protocolo, não da implementação concreta
+class Login {
+    private let tracker: Tracker
+    
+    init(tracker: Tracker) {
+        self.tracker = tracker
+    }
+    
+    func initLogin(){
+        tracker.eventRegister(eventName: "Login - initLogin")
+        print("Fazendo login...")
+        print()
+        sleep(2)
+    }
+}
+
+// ... e assim por diante para Home e Profile.
+```
